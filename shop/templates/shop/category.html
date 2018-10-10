@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block metadescription %}
+    {% if category %}
+        {{ category.description|truncatewords:155 }}
+    {% else %}
+        Welcome to the cushion store where tou can but confy and awesome chusions
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if category %}
+        {{ category.name }} - Perfect Cushion Store
+    {% else %}
+        See Our Collections - Perfect Cushion Store
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <!-- Breadcrumb Navigation -->
+    {% if category %}
+        <div class="row my-row-class">
+            <div class="mx-auto">
+                <p><a href="{% url 'shop:allProdCat' %}">Our Product Collections</a> | {{ category.name }}</p>
+            </div>
+        </div>
+    {% endif %}
+    <div class="mx-auto">
+    {% if category %}
+        <img class="my-image" src="{{ category.image.url }}" alt="{{ category.name }}">
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center my-title">{{ category.name }}</h1>
+        <p class="text-justify">{{ category.description }}</p>
+    </div>
+    {% else %}
+    <div>
+        <img class="my-image my-image-padding" src="{% static 'img/banner.jpg' %}" alt="Our Products Collections">
+    </div>
+    <br>
+    <div>
+        <h1 class="text-center my-title">Our Products Collections</h1>
+        <p class="text-justify">
+            Finding the perfect cushion for your room can instantly add to the levels of comfort and sense of style throughout your home.
+            They can transform the blandest of decors instantly by adding colour, softness and an air of cosiness. As well as being comfy
+            and looking great our range of cushions will certainly embolden your decor with persinalized charm.
+        </p>
+    </div>
+    {% endif %}
+    <div class="container">
+        <div class="row mx-auto">
+            {% for product in products %}
+            <div class="my-bottom-margin col-9 col-sm-12 col-md-4 col-md-12 col-lg-4">
+                <div class="card text-center" style="min-width: 18rem;">
+                    <a href="{{ product.get_url }}"><img class="card-img-top my-image" src="{{ product.image.url }}" alt="{{ product.name }}"></a>
+                    <div class="card-body">
+                        <h4>{{ product.name }}</h4>
+                        <p>{{ product.price }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>    
+        
+{% endblock %}
