@@ -86,6 +86,42 @@ body {
     padding-right: 20px;
 }
 
+/* search */
+.my-search-text {
+    padding-top: 20px;
+}
+
+/* Cart */
+.my-custom-table {
+    min-width: 400px;
+    font-size: 14px;
+}
+
+.my-custom-thead {
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    background-color: #f8f9fa !important;
+}
+
+.custom-image {
+    width: 100px;
+    height: 100px;
+}
+
+.custom-a {
+    text-decoration: None;
+}
+
+.custom-icon {
+    text-decoration: None;
+    color: #868e96 !important;
+}
+
+.my-custom-button {
+    margin-top: 5px;
+}
+
 /* footer */
 .my-footer {
     background-color: #f8f9fa;
